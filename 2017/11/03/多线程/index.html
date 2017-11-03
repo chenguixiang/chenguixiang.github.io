@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="多线程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程什">
+<meta name="keywords" content="多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://yoursite.com/2017/11/03/多线程/index.html">
+<meta property="og:site_name" content="Miss Chen&#39;s Blog">
+<meta property="og:description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程什">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2017/11/03/多线程/snipaste_20171103_125642.png">
+<meta property="og:updated_time" content="2017-11-03T05:24:52.815Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程什">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/03/多线程/snipaste_20171103_125642.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/03/多线程/"/>
+
+
+
+
+
+  <title>Hello World | Miss Chen's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?faaa1a49068a166fc29d44d5e4c22686";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss Chen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/03/多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Miss Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss Chen's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T10:14:21+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术类/" itemprop="url" rel="index">
+                    <span itemprop="name">技术类</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。<br>C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程<br>什么是多线程呢？即就是一个程序中有多个线程在同时执行<br><a id="more"></a></p>
+<h2 id="线程实现"><a href="#线程实现" class="headerlink" title="线程实现"></a>线程实现</h2><h3 id="实现线程一-继承Thread类"><a href="#实现线程一-继承Thread类" class="headerlink" title="实现线程一:继承Thread类"></a>实现线程一:继承Thread类</h3><p>该如何创建线程呢？通过API中搜索，查到Thread类。通过阅读Thread类中的描述。Thread是程序中的执行线程。Java 虚拟机允许应用程序并发地运行多个执行线程。 该如何创建线程呢？通过API中搜索，查到Thread类。通过阅读Thread类中的描述。Thread是程序中的执行线程。Java 虚拟机允许应用程序并发地运行多个执行线程。<br><img src="snipaste_20171103_125642.png" alt="snipaste_20171103_125642"><br>A:创建线程的步骤：<br>1.定义一个类继承Thread。<br>2.重写run方法。<br>3.创建子类对象，就是创建线程对象。<br>4.调用start方法，开启线程并让线程执行，同时还会告诉jvm去调用run方法</p>
+<h3 id="实现线程二-实现Runnable接口"><a href="#实现线程二-实现Runnable接口" class="headerlink" title="实现线程二:实现Runnable接口"></a>实现线程二:实现Runnable接口</h3><p>创建线程的另一种方法是<strong>声明实现 Runnable 接口的类</strong>。该类<strong>然后实现 run 方法。</strong>然后<strong>创建Runnable的子类对象</strong>，传入到某个线程的构造方法中，开启线程。<br>为何要实现Runnable接口，Runable是啥玩意呢？继续API搜索。<br>查看Runnable接口说明文档：Runnable接口用来指定每个线程要执行的任务。包含了一个 run 的无参数抽象方法，需要由接口实现类<strong>重写该方法</strong>。</p>
+<p>创建线程的步骤。<br>1、定义类实现Runnable接口。<br>2、覆盖接口中的run方法。。<br>3、创建Thread类的对象<br>4、将Runnable接口的子类对象作为参数传递给Thread类的构造函数。<br>5、调用Thread类的start方法开启线程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class MyThread2 implements Runnable &#123;</div><div class="line">    int num;</div><div class="line"></div><div class="line">    public MyThread2(int num) &#123;</div><div class="line">        this.num = num;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        for (int i = 0; i &lt; 100; i++) &#123;</div><div class="line">            //Thread t = Thread.currentThread();</div><div class="line">            //System.out.println(t.getName() + &quot;:&quot; + i);</div><div class="line"></div><div class="line">            //链式编程</div><div class="line">            System.out.println(Thread.currentThread().getName() + &quot;:&quot; + i + num);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="多线程安全问题产生-amp-解决方案"><a href="#多线程安全问题产生-amp-解决方案" class="headerlink" title="多线程安全问题产生 &amp; 解决方案"></a>多线程安全问题产生 &amp; 解决方案</h2><h3 id="多线程卖票案例"><a href="#多线程卖票案例" class="headerlink" title="多线程卖票案例"></a>多线程卖票案例</h3><p>需求:用三个线程模拟三个售票窗口,共同卖100张火车票,每个线程打印出卖第几张票<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">package com.itheima_03;</div><div class="line">public class TicketThread implements Runnable &#123;</div><div class="line">    int tickets = 100;//火车票数量</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        //出售火车票</div><div class="line">        while(true) &#123;</div><div class="line">            //当火车票小于0张，则停止售票</div><div class="line">            if(tickets &gt; 0) &#123;</div><div class="line">                /*</div><div class="line">                 * t1,t2,t3</div><div class="line">                 * 假设只剩一张票</div><div class="line">                 * t1过来了，他一看有票，他就进来了，但是他突然肚子不舒服，然后他就去上卫生间了</div><div class="line">                 * t2也过来了，他一看也有票，他也进来了，但是他的肚子也不舒服，他也去上卫生间了</div><div class="line">                 * </div><div class="line">                 * t1上完了卫生间回来了，开始售票</div><div class="line">                 *     tickets = 0;</div><div class="line">                 * t2也上完卫生间回来了，他也进行售票</div><div class="line">                 *  tickets = -1;</div><div class="line">                 * </div><div class="line">                 * </div><div class="line">                 */</div><div class="line">                try &#123;</div><div class="line">                    Thread.sleep(100);</div><div class="line">                &#125; catch (InterruptedException e) &#123;</div><div class="line">                    // TODO Auto-generated catch block</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                System.out.println(Thread.currentThread().getName() + &quot;:&quot; +tickets--);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="多线程安全问题解决"><a href="#多线程安全问题解决" class="headerlink" title="多线程安全问题解决"></a>多线程安全问题解决</h2><h3 id="使用同步代码块解决"><a href="#使用同步代码块解决" class="headerlink" title="使用同步代码块解决"></a>使用同步代码块解决</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> 格式:</div><div class="line">  synchronized(锁对象)&#123;</div><div class="line">      //需要同步的代码</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>问题出现的原因：</p>
+<ul>
+<li>要有多个线程</li>
+<li>要有被多个线程所共享的数据</li>
+<li>多个线程并发的访问共享的数据</li>
+</ul>
+<h3 id="使用修饰符-synchronized解决"><a href="#使用修饰符-synchronized解决" class="headerlink" title="使用修饰符 synchronized解决"></a>使用修饰符 synchronized解决</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">格式: </div><div class="line">修饰符 synchronized 返回值 方法名()&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">package com.itheima_05;</div><div class="line">/*</div><div class="line"> * 同步方法:使用关键字synchronized修饰的方法，一旦被一个线程访问，则整个方法全部锁住，其他线程则无法访问</div><div class="line"> * </div><div class="line"> * synchronized</div><div class="line"> * 注意：</div><div class="line"> *         非静态同步方法的锁对象是this</div><div class="line"> *         静态的同步方法的锁对象是当前类的字节码对象</div><div class="line"> */</div><div class="line">public class TicketThread implements Runnable &#123;</div><div class="line">    static int tickets = 100;// 火车票数量</div><div class="line">    Object obj = new Object();</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        // 出售火车票</div><div class="line">        while (true) &#123;</div><div class="line">            /*synchronized (obj) &#123;</div><div class="line">                method();</div><div class="line">            &#125;*/</div><div class="line"></div><div class="line">            //method();</div><div class="line">            method2();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private synchronized void method() &#123;</div><div class="line">        if (tickets &gt; 0) &#123;</div><div class="line"></div><div class="line">            try &#123;</div><div class="line">                Thread.sleep(100);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                // TODO Auto-generated catch block</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(Thread.currentThread().getName() + &quot;:&quot; + tickets--);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    private static synchronized void method2() &#123;</div><div class="line"></div><div class="line">        if (tickets &gt; 0) &#123;</div><div class="line"></div><div class="line">            try &#123;</div><div class="line">                Thread.sleep(100);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                // TODO Auto-generated catch block</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            System.out.println(Thread.currentThread().getName() + &quot;:&quot; + tickets--);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package com.itheima_05;</div><div class="line"></div><div class="line">public class TicktetTest &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        //创建线程对象</div><div class="line">        TicketThread tt = new TicketThread();</div><div class="line"></div><div class="line">        Thread t = new Thread(tt);</div><div class="line">        t.setName(&quot;窗口1&quot;);</div><div class="line">        Thread t2 = new Thread(tt);</div><div class="line">        t2.setName(&quot;窗口2&quot;);</div><div class="line">        Thread t3 = new Thread(tt);</div><div class="line">        t3.setName(&quot;窗口3&quot;);</div><div class="line"></div><div class="line">        //启动线程对象</div><div class="line">        t.start();</div><div class="line">        t2.start();</div><div class="line">        t3.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/01/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Miss Chen" />
+            
+              <p class="site-author-name" itemprop="name">Miss Chen</p>
+              <p class="site-description motion-element" itemprop="description">Dream as if you'll live forever, live as if you'll die today.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程实现"><span class="nav-number">1.</span> <span class="nav-text">线程实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现线程一-继承Thread类"><span class="nav-number">1.1.</span> <span class="nav-text">实现线程一:继承Thread类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现线程二-实现Runnable接口"><span class="nav-number">1.2.</span> <span class="nav-text">实现线程二:实现Runnable接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程安全问题产生-amp-解决方案"><span class="nav-number">2.</span> <span class="nav-text">多线程安全问题产生 & 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程卖票案例"><span class="nav-number">2.1.</span> <span class="nav-text">多线程卖票案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程安全问题解决"><span class="nav-number">3.</span> <span class="nav-text">多线程安全问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用同步代码块解决"><span class="nav-number">3.1.</span> <span class="nav-text">使用同步代码块解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用修饰符-synchronized解决"><span class="nav-number">3.2.</span> <span class="nav-text">使用修饰符 synchronized解决</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Miss Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
