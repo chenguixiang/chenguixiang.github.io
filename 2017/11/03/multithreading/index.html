@@ -123,20 +123,23 @@
 
 
 
-<meta name="description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程什">
+<meta name="description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线">
 <meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="多线程的实现和安全问题解决">
 <meta property="og:url" content="http://yoursite.com/2017/11/03/multithreading/index.html">
 <meta property="og:site_name" content="Miss Chen&#39;s Blog">
-<meta property="og:description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程什">
+<meta property="og:description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/avatar.png">
+<meta property="og:image" content="http://yoursite.com/images/avatar.png">
+<meta property="og:image" content="http://yoursite.com/images/avatar.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/03/multithreading/snipaste_20171103_125642.png">
-<meta property="og:updated_time" content="2017-11-03T05:24:52.815Z">
+<meta property="og:updated_time" content="2017-11-03T13:55:30.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程什">
-<meta name="twitter:image" content="http://yoursite.com/2017/11/03/multithreading/snipaste_20171103_125642.png">
+<meta name="twitter:title" content="多线程的实现和安全问题解决">
+<meta name="twitter:description" content="首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线">
+<meta name="twitter:image" content="http://yoursite.com/images/avatar.png">
 
 
 
@@ -172,7 +175,7 @@
 
 
 
-  <title>Hello World | Miss Chen's Blog</title>
+  <title>多线程的实现和安全问题解决 | Miss Chen's Blog</title>
   
 
 
@@ -326,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">多线程的实现和安全问题解决</h1>
         
 
         <div class="post-meta">
@@ -398,7 +401,7 @@
       
 
       
-        <p>首先来了解几个关于多线程有关的概念。A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。<br>C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程<br>什么是多线程呢？即就是一个程序中有多个线程在同时执行<br><a id="more"></a></p>
+        <p><img src="/images/avatar.png" class="full-image"><br> <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/avatar.png" class="full-image" alt="alt" title="title"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span><br> <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/avatar.png" class="full-image" alt="alt" title="title"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span><br>首先来了解几个关于多线程有关的概念。<br>A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。<br>C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程<br>什么是多线程呢？即就是一个程序中有多个线程在同时执行<br><a id="more"></a></p>
 <h2 id="线程实现"><a href="#线程实现" class="headerlink" title="线程实现"></a>线程实现</h2><h3 id="实现线程一-继承Thread类"><a href="#实现线程一-继承Thread类" class="headerlink" title="实现线程一:继承Thread类"></a>实现线程一:继承Thread类</h3><p>该如何创建线程呢？通过API中搜索，查到Thread类。通过阅读Thread类中的描述。Thread是程序中的执行线程。Java 虚拟机允许应用程序并发地运行多个执行线程。 该如何创建线程呢？通过API中搜索，查到Thread类。通过阅读Thread类中的描述。Thread是程序中的执行线程。Java 虚拟机允许应用程序并发地运行多个执行线程。<br><img src="snipaste_20171103_125642.png" alt="snipaste_20171103_125642"><br>A:创建线程的步骤：<br>1.定义一个类继承Thread。<br>2.重写run方法。<br>3.创建子类对象，就是创建线程对象。<br>4.调用start方法，开启线程并让线程执行，同时还会告诉jvm去调用run方法</p>
 <h3 id="实现线程二-实现Runnable接口"><a href="#实现线程二-实现Runnable接口" class="headerlink" title="实现线程二:实现Runnable接口"></a>实现线程二:实现Runnable接口</h3><p>创建线程的另一种方法是<strong>声明实现 Runnable 接口的类</strong>。该类<strong>然后实现 run 方法。</strong>然后<strong>创建Runnable的子类对象</strong>，传入到某个线程的构造方法中，开启线程。<br>为何要实现Runnable接口，Runable是啥玩意呢？继续API搜索。<br>查看Runnable接口说明文档：Runnable接口用来指定每个线程要执行的任务。包含了一个 run 的无参数抽象方法，需要由接口实现类<strong>重写该方法</strong>。</p>
 <p>创建线程的步骤。<br>1、定义类实现Runnable接口。<br>2、覆盖接口中的run方法。。<br>3、创建Thread类的对象<br>4、将Runnable接口的子类对象作为参数传递给Thread类的构造函数。<br>5、调用Thread类的start方法开启线程。</p>
@@ -440,22 +443,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/11/01/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -533,7 +520,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
