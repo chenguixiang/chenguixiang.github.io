@@ -123,19 +123,16 @@
 
 
 
-<meta name="description" content="File类File概述File文件和目录路径名的抽象表示形式。即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢 File类的构造函数File(String pathname) :将一个字符串路径封装成File对象File(String">
 <meta name="keywords" content="IO流，File类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IO流基础">
 <meta property="og:url" content="http://chenguixiang.github.io/2017/11/04/IO/index.html">
 <meta property="og:site_name" content="Miss Chen&#39;s Blog">
-<meta property="og:description" content="File类File概述File文件和目录路径名的抽象表示形式。即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢 File类的构造函数File(String pathname) :将一个字符串路径封装成File对象File(String">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chenguixiang.github.io/images/io.png">
-<meta property="og:updated_time" content="2017-11-04T04:43:24.334Z">
+<meta property="og:updated_time" content="2017-11-04T04:47:28.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO流基础">
-<meta name="twitter:description" content="File类File概述File文件和目录路径名的抽象表示形式。即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢 File类的构造函数File(String pathname) :将一个字符串路径封装成File对象File(String">
 <meta name="twitter:image" content="http://chenguixiang.github.io/images/io.png">
 
 
@@ -409,7 +406,7 @@
       
 
       
-        <p><img src="/images/io.png" class="full-image"> </p>
+        <p><img src="/images/io.png" class="full-image"><br><a id="more"></a></p>
 <h1 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h1><h2 id="File概述"><a href="#File概述" class="headerlink" title="File概述"></a>File概述</h2><p><strong>File文件和目录路径名的抽象表示形式。</strong>即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢</p>
 <h2 id="File类的构造函数"><a href="#File类的构造函数" class="headerlink" title="File类的构造函数"></a>File类的构造函数</h2><p>File(String pathname) :将一个字符串路径封装成File对象<br>File(String parent,String child):传入一个父级路径和子级路径<br>File(File parent,String child):传入一个File类型的父级路径和子级路径</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.itheima_01;</div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * File:文件和目录路径名的抽象表示形式，File 类的实例是不可变的</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * 构造方法：</span></div><div class="line"><span class="comment"> *         File(File parent, String child) </span></div><div class="line"><span class="comment"> *         File(String pathname) </span></div><div class="line"><span class="comment"> *         File(String parent, String child)      </span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//File(String pathname) ：将指定的路径名转换成一个File对象</span></div><div class="line">        <span class="comment">//File f = new File("D:\\a\\b.txt");</span></div><div class="line"></div><div class="line">        <span class="comment">//File(String parent, String child) : 根据指定的父路径和文件路径创建File对象</span></div><div class="line">        <span class="comment">//File f2 = new File("D:\\a","b.txt");</span></div><div class="line"></div><div class="line">        <span class="comment">//File(File parent, String child) :根据指定的父路径对象和文件路径创建File对象</span></div><div class="line">        <span class="comment">//File parent = new File("D:\\a");</span></div><div class="line">        <span class="comment">//File f3 = new File(parent,"b.txt");</span></div><div class="line"></div><div class="line">        File f4 = <span class="keyword">new</span> File(<span class="keyword">new</span> File(<span class="string">"D:\\a"</span>,<span class="string">"b.txt"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
