@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="IO流，File类," />
 
 
 
@@ -123,16 +123,20 @@
 
 
 
-<meta name="description" content="Dream as if you&apos;ll live forever, live as if you&apos;ll die today.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Miss Chen&#39;s Blog">
-<meta property="og:url" content="http://chenguixiang.github.io/index.html">
+<meta name="description" content="File类File概述File文件和目录路径名的抽象表示形式。即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢 File类的构造函数File(String pathname) :将一个字符串路径封装成File对象File(String">
+<meta name="keywords" content="IO流，File类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IO流基础">
+<meta property="og:url" content="http://chenguixiang.github.io/2017/11/04/IO/index.html">
 <meta property="og:site_name" content="Miss Chen&#39;s Blog">
-<meta property="og:description" content="Dream as if you&apos;ll live forever, live as if you&apos;ll die today.">
+<meta property="og:description" content="File类File概述File文件和目录路径名的抽象表示形式。即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢 File类的构造函数File(String pathname) :将一个字符串路径封装成File对象File(String">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://chenguixiang.github.io/images/io.png">
+<meta property="og:updated_time" content="2017-11-04T04:43:24.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Miss Chen&#39;s Blog">
-<meta name="twitter:description" content="Dream as if you&apos;ll live forever, live as if you&apos;ll die today.">
+<meta name="twitter:title" content="IO流基础">
+<meta name="twitter:description" content="File类File概述File文件和目录路径名的抽象表示形式。即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢 File类的构造函数File(String pathname) :将一个字符串路径封装成File对象File(String">
+<meta name="twitter:image" content="http://chenguixiang.github.io/images/io.png">
 
 
 
@@ -162,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="http://chenguixiang.github.io/"/>
+  <link rel="canonical" href="http://chenguixiang.github.io/2017/11/04/IO/"/>
 
 
 
 
 
-  <title>Miss Chen's Blog</title>
+  <title>IO流基础 | Miss Chen's Blog</title>
   
 
 
@@ -197,8 +201,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -291,9 +294,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -323,9 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/04/IO/" itemprop="url">IO流基础</a></h1>
+          <h1 class="post-title" itemprop="name headline">IO流基础</h1>
         
 
         <div class="post-meta">
@@ -408,9 +409,7 @@
       
 
       
-        
-          
-            <p><img src="/images/io.png" class="full-image"> </p>
+        <p><img src="/images/io.png" class="full-image"> </p>
 <h1 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h1><h2 id="File概述"><a href="#File概述" class="headerlink" title="File概述"></a>File概述</h2><p><strong>File文件和目录路径名的抽象表示形式。</strong>即，Java中把文件或者目录（文件夹）都封装成File对象。也就是说如果我们要去操作硬盘上的文件，或者文件夹只要找到File这个类即可,那么我们就要研究研究File这个类中都有那些功能可以操作文件或者文件夹呢</p>
 <h2 id="File类的构造函数"><a href="#File类的构造函数" class="headerlink" title="File类的构造函数"></a>File类的构造函数</h2><p>File(String pathname) :将一个字符串路径封装成File对象<br>File(String parent,String child):传入一个父级路径和子级路径<br>File(File parent,String child):传入一个File类型的父级路径和子级路径</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.itheima_01;</div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * File:文件和目录路径名的抽象表示形式，File 类的实例是不可变的</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * 构造方法：</span></div><div class="line"><span class="comment"> *         File(File parent, String child) </span></div><div class="line"><span class="comment"> *         File(String pathname) </span></div><div class="line"><span class="comment"> *         File(String parent, String child)      </span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//File(String pathname) ：将指定的路径名转换成一个File对象</span></div><div class="line">        <span class="comment">//File f = new File("D:\\a\\b.txt");</span></div><div class="line"></div><div class="line">        <span class="comment">//File(String parent, String child) : 根据指定的父路径和文件路径创建File对象</span></div><div class="line">        <span class="comment">//File f2 = new File("D:\\a","b.txt");</span></div><div class="line"></div><div class="line">        <span class="comment">//File(File parent, String child) :根据指定的父路径对象和文件路径创建File对象</span></div><div class="line">        <span class="comment">//File parent = new File("D:\\a");</span></div><div class="line">        <span class="comment">//File f3 = new File(parent,"b.txt");</span></div><div class="line"></div><div class="line">        File f4 = <span class="keyword">new</span> File(<span class="keyword">new</span> File(<span class="string">"D:\\a"</span>,<span class="string">"b.txt"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -428,8 +427,6 @@
 <h2 id="复制图片-路径传进来时具体的文本有名字，复制过去也要有"><a href="#复制图片-路径传进来时具体的文本有名字，复制过去也要有" class="headerlink" title="复制图片(路径传进来时具体的文本有名字，复制过去也要有)"></a>复制图片(路径传进来时具体的文本有名字，复制过去也要有)</h2><p>字节流可以操作<strong>所有类型</strong>的文件,因为所有的文件在计算机中都是以<code>字节形式存储</code><br>而<strong>字符流只能用来操作纯文本类型</strong>的文件,不能操作字节类型的文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">package com.ithei_04;</div><div class="line">import java.io.FileInputStream;</div><div class="line">import java.io.FileNotFoundException;</div><div class="line">import java.io.FileOutputStream;</div><div class="line">import java.io.FileReader;</div><div class="line">import java.io.FileWriter;</div><div class="line">import java.io.IOException;</div><div class="line"></div><div class="line">/*</div><div class="line"> * 分别使用字符流和字节流复制图片</div><div class="line"> * </div><div class="line"> * 二进制文件只能使用字节流进行复制（使用windows自带记事本打开读不懂的）</div><div class="line"> * 文本文件的复制即可使用字符流，也可以使用字节流</div><div class="line"> * </div><div class="line"> */</div><div class="line">public class CopyImage &#123;</div><div class="line">    public static void main(String[] args) throws IOException  &#123;</div><div class="line">        //method();</div><div class="line"></div><div class="line">        //创建字节输入流对象</div><div class="line">        FileInputStream fis = new FileInputStream(&quot;传智学院.jpg&quot;);</div><div class="line">        //创建字节输出流对象</div><div class="line">        FileOutputStream fos = new FileOutputStream(&quot;d:\\传智学院.jpg&quot;);</div><div class="line"></div><div class="line">        //一次读写一个字节数组</div><div class="line">        int len;//用于存储读到的字节个数</div><div class="line">        byte[] bys = new byte[1024];</div><div class="line">        while((len = fis.read(bys)) != -1) &#123;</div><div class="line">            fos.write(bys,0,len);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //释放资源</div><div class="line">        fos.close();</div><div class="line">        fis.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static void method() throws FileNotFoundException, IOException &#123;</div><div class="line">        //创建字符输入流对象</div><div class="line">        FileReader fr = new FileReader(&quot;传智学院.jpg&quot;);</div><div class="line">        //创建字符输出流对象</div><div class="line">        FileWriter fw = new FileWriter(&quot;d:\\传智学院.jpg&quot;);</div><div class="line"></div><div class="line">        //一次读写一个字符数组</div><div class="line">        int len;//用于存储读到的字符个数</div><div class="line">        char[] chs = new char[1024];</div><div class="line">        while((len = fr.read(chs)) != -1) &#123;</div><div class="line">            fw.write(chs,0,len);</div><div class="line">            fw.flush();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //释放资源</div><div class="line">        fw.close();</div><div class="line">        fr.close();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -444,171 +441,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenguixiang.github.io/2017/11/03/multithreading/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Miss Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Miss Chen's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/03/multithreading/" itemprop="url">多线程的实现和安全问题解决</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T10:14:21+08:00">
-                2017-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术类/" itemprop="url" rel="index">
-                    <span itemprop="name">技术类</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/IO流，File类/" rel="tag"># IO流，File类</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/03/multithreading/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/03/multithreading/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p><img src="/images/timg.png" class="full-image"><br>首先来了解几个关于多线程有关的概念。<br>A:进程：进程指正在运行的程序。确切的来说，当一个程序进入内存运行，即变成一个进程，进程是处于运行过程中的程序，并且具有一定独立功能。 B:线程：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。<br>C:简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程<br>什么是多线程呢？即就是一个程序中有多个线程在同时执行<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/03/multithreading/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/03/multithreading/" rel="next" title="多线程的实现和安全问题解决">
+                <i class="fa fa-chevron-left"></i> 多线程的实现和安全问题解决
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -618,10 +480,17 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -629,6 +498,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -649,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -716,6 +608,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#File类"><span class="nav-number">1.</span> <span class="nav-text">File类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#File概述"><span class="nav-number">1.1.</span> <span class="nav-text">File概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File类的构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">File类的构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File类创建和删除功能"><span class="nav-number">1.3.</span> <span class="nav-text">File类创建和删除功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File类的判断功能"><span class="nav-number">1.4.</span> <span class="nav-text">File类的判断功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File类的获取功能和修改名字功能"><span class="nav-number">1.5.</span> <span class="nav-text">File类的获取功能和修改名字功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符流与字节流"><span class="nav-number">2.</span> <span class="nav-text">字符流与字节流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用字符流复制文本文件（不要忘了释放资源）"><span class="nav-number">2.1.</span> <span class="nav-text">利用字符流复制文本文件（不要忘了释放资源）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用字节流复制文本文件"><span class="nav-number">2.2.</span> <span class="nav-text">利用字节流复制文本文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制图片-路径传进来时具体的文本有名字，复制过去也要有"><span class="nav-number">2.3.</span> <span class="nav-text">复制图片(路径传进来时具体的文本有名字，复制过去也要有)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -849,6 +757,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -866,6 +778,18 @@
       <script id="dsq-count-scr" src="https://misschen.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://chenguixiang.github.io/2017/11/04/IO/';
+          this.page.identifier = '2017/11/04/IO/';
+          this.page.title = 'IO流基础';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://misschen.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
