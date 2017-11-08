@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="ElasticSearch，Solr," />
+  <meta name="keywords" content="抽象类，接口," />
 
 
 
@@ -123,16 +123,16 @@
 
 
 
-<meta name="keywords" content="ElasticSearch，Solr">
+<meta name="keywords" content="抽象类，接口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ElasticSearch和Solr的对比分析">
-<meta property="og:url" content="http://chenguixiang.github.io/2016/09/03/ElasticsearchAndSolr/index.html">
+<meta property="og:title" content="抽象类与接口的区别">
+<meta property="og:url" content="http://chenguixiang.github.io/2016/08/10/interface/index.html">
 <meta property="og:site_name" content="Miss Chen&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chenguixiang.github.io/images/solr.png">
-<meta property="og:updated_time" content="2017-11-08T02:45:05.838Z">
+<meta property="og:updated_time" content="2017-11-07T05:36:56.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ElasticSearch和Solr的对比分析">
+<meta name="twitter:title" content="抽象类与接口的区别">
 <meta name="twitter:image" content="http://chenguixiang.github.io/images/solr.png">
 
 
@@ -163,13 +163,13 @@
 
 
 
-  <link rel="canonical" href="http://chenguixiang.github.io/2016/09/03/ElasticsearchAndSolr/"/>
+  <link rel="canonical" href="http://chenguixiang.github.io/2016/08/10/interface/"/>
 
 
 
 
 
-  <title>ElasticSearch和Solr的对比分析 | Miss Chen's Blog</title>
+  <title>抽象类与接口的区别 | Miss Chen's Blog</title>
   
 
 
@@ -306,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenguixiang.github.io/2016/09/03/ElasticsearchAndSolr/">
+    <link itemprop="mainEntityOfPage" href="http://chenguixiang.github.io/2016/08/10/interface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Miss Chen">
@@ -323,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ElasticSearch和Solr的对比分析</h1>
+          <h1 class="post-title" itemprop="name headline">抽象类与接口的区别</h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-03T12:16:04+08:00">
-                2016-09-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-10T10:16:20+08:00">
+                2016-08-10
               </time>
             
 
@@ -376,9 +376,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/09/03/ElasticsearchAndSolr/#comments" itemprop="discussionUrl">
+                <a href="/2016/08/10/interface/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/09/03/ElasticsearchAndSolr/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/08/10/interface/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,47 +407,18 @@
 
       
         <p><img src="/images/solr.png" class="full-image"><br><a id="more"></a></p>
-<h2 id="什么是ElasticSearch"><a href="#什么是ElasticSearch" class="headerlink" title="什么是ElasticSearch"></a>什么是ElasticSearch</h2><p>ElasticSearch是基于rest风格,分布式搜索引擎,非常优秀的lucene库.内置的JSON API提供了一个优雅的+ HTTP平台完美的结合(例:弹性可搜索的ruby gem)。它的简单的、可伸缩。<br>它可以用于全文搜索，结构化搜索以及分析，当然你也可以将这三者进行组合。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>Elasticsearch是分布式的。不需要其他组件，分发是实时的，被叫做”Push replication”。</li>
-<li>Elasticsearch 完全支持 Apache Lucene 的接近实时的搜索。</li>
-<li>处理多租户（<a href="http://en.wikipedia.org/wiki/Multitenancy" target="_blank" rel="external">multitenancy</a>）不需要特殊配置，而Solr则需要更多的高级设置。</li>
-<li>Elasticsearch 采用 Gateway 的概念，使得完备份更加简单。</li>
-<li>各节点组成对等的网络结构，某些节点出现故障时会自动分配其他节点代替其进行工作。</li>
-</ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
-<li>只有一名开发者（当前Elasticsearch GitHub组织已经不只如此，已经有了相当活跃的维护者）</li>
-<li>还不够自动（不适合当前新的Index Warmup API）</li>
-</ol>
-<h2 id="对比solr"><a href="#对比solr" class="headerlink" title="对比solr"></a>对比solr</h2><p>solr效率是非常快的,这个我可以肯定.solr是稳定的,可靠的和出箱,它优于几乎每个搜索解决方案基本搜索(包括Elasticsearch)。<br>solr的体系结构没有建立在实时搜索应用上,实时web应用程序的要求需要交付更新实时随着新内容附近是由用户生成的。</p>
-<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>Solr有一个更大、更成熟的用户、开发和贡献者社区。</li>
-<li>支持添加多种格式的索引，如：HTML、PDF、微软 Office 系列软件格式以及 JSON、XML、CSV 等纯文本格式。</li>
-<li>Solr比较成熟、稳定。</li>
-<li>不考虑建索引的同时进行搜索，速度更快。</li>
-</ol>
-<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ol>
-<li>建立索引时，搜索效率下降，实时索引搜索效率不高。当单纯的对已有数据进行搜索时，Solr更快。<br>2.当实时建立索引时, Solr会产生io阻塞，查询性能较差, Elasticsearch具有明显的优势。<br>3.随着数据量的增加，Solr的搜索效率会变得更低，而Elasticsearch却没有明显的变化。</li>
-</ol>
-<p>综上所述，Solr的架构不适合实时搜索的应用。<br>Elasticsearch的分布式特性使得它跟上并发搜索+索引请求轻松而过.</p>
-<h2 id="典型的实时搜索架构如下"><a href="#典型的实时搜索架构如下" class="headerlink" title="典型的实时搜索架构如下"></a>典型的实时搜索架构如下</h2><ul>
-<li>用户内容建立索引添加到搜索引擎中</li>
-<li>执行组查询搜索引擎来确定内容匹配特定的标准</li>
-<li>执行特定的逻辑通知注册通道,搜索新的内容 </li>
-</ul>
-<p>可以支持这个模型Elasticsearch很好,但它也提供了一个功能,将整个工作流在它的头。</p>
-<p>新的工作流程如下:</p>
-<ul>
-<li>注册特定查询</li>
-<li>索引新内容</li>
-<li>在索引操作的响应将包含匹配的percolations</li>
-</ul>
-<p>完善的实时搜索体系结构</p>
-<p>最后</p>
-<p>Solr可能选择的武器当建筑标准的搜索应用程序,但Elasticsearch把它到下一个水平与一个架构创建现代实时搜索应用程序。渗流是一个令人兴奋的和创新的功能,仅凭吹Solr出来的水。Elasticsearch是可伸缩的,快速和梦想结合。</p>
-<p><strong>结论：</strong></p>
-<p><strong>1. solr查询快，但更新索引时慢（即插入删除慢），用于电商等查询多的应用；</strong></p>
-<p><strong>2.ES建立索引快（即查询慢），即实时性查询快，用于facebook新浪等搜索。</strong></p>
+<p>abstract class和interface是Java语言中对于抽象类定义进行支持的两种机制，正是由于这两种机制的存在，才赋予了Java强大的面向对象能力。 abstract class和interface之间在对于抽象类定义的支持方面具有很大的相似性，甚至可以相互替换，因此很多开发者在进行抽象类定义时对于 abstract class和interface的选择显得比较随意。</p>
+<p>其实，两者之间还是有很大的区别的，对于它们的选择甚至反映出对于问题领域本质的理解、对于设计意图的理解是否正确、合理。</p>
+<h1 id="一、理解抽象类"><a href="#一、理解抽象类" class="headerlink" title="一、理解抽象类"></a>一、理解抽象类</h1><p>abstract class和interface在Java语言中都是用来进行抽象类（本文中的抽象类并非从abstract class翻译而来，它表示的是一个抽象体，而abstract class为Java语言中用于定义抽象类的一种方法，请读者注意区分）定义的，那么什么是抽象类，使用抽象类能为我们带来什么好处呢？</p>
+<p>在面向对象的概念中，我们知道所有的对象都是通过类来描绘的，但是反过来却不是 这样。并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。抽象类往往用来表征我们在对问题领 域进行分析、设计中得出的抽象概念，是对一系列看上去不同，但是本质上相同的具体概念的抽象。</p>
+<p>比如：如果我们进行一个图形编辑软件的开发，就会发现问题领域存在着圆、三角形 这样一些具体概念，它们是不同的，但是它们又都属于形状这样一个概念，形状这个概念在问题领域是不存在的，它就是一个抽象概念。正是因为抽象的概念在问题 领域没有对应的具体概念，所以用以表征抽象概念的抽象类是<strong>不能够实例化的。</strong></p>
+<p>在面向对象领域，抽象类主要用来进行类型隐藏。我们可以构造出一个固定的一组行 为的抽象描述，但是这组行为却能够有任意个可能的具体实现方式。这个抽象描述就是抽象类，而这一组任意个可能的具体实现则表现为所有可能的派生类。模块可 以操作一个抽象体。由于模块依赖于一个固定的抽象体，因此它可以是不允许修改的；同时，通过从这个抽象体派生，也可扩展此模块的行为功能。</p>
+<h1 id="二、从语法定义层面看abstract-class和interface"><a href="#二、从语法定义层面看abstract-class和interface" class="headerlink" title="二、从语法定义层面看abstract class和interface"></a>二、从语法定义层面看abstract class和interface</h1><p>在语法层面，Java语言对于abstract class和interface给出了不同的定义方式，下面以定义一个名为Demo的抽象类为例来说明这种不同。使用abstract class的方式定义Demo抽象类的方式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> ｛    </span></div><div class="line"><span class="class">  </span></div><div class="line"><span class="class"><span class="title">abstract</span> <span class="title">void</span> <span class="title">method1</span>()</span>;    </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>;    </div><div class="line">  </div><div class="line">…    </div><div class="line">  </div><div class="line">｝</div></pre></td></tr></table></figure>
+<p>使用interface的方式定义Demo抽象类的方式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Demo</span> </span>&#123;    </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>;    </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>;    </div><div class="line">  </div><div class="line">…    </div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先，abstract class在Java语言中表示的是一种继承关系，一个类只能使用一次继承关系。但是，一个类却可以实现多个interface。也许，这是Java语言的设计者在考虑Java对于多重继承的支持方面的一种折中考虑。</p>
+<p>其次，在abstract class的定义中，我们可以赋予方法的默认行为。但是在interface的定义中，方法却不能拥有默认行为，为了绕过这个限制，必须使用委托，但是这会 增加一些复杂性，有时会造成很大的麻烦。</p>
 
       
     </div>
@@ -465,7 +436,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ElasticSearch，Solr/" rel="tag"># ElasticSearch，Solr</a>
+            <a href="/tags/抽象类，接口/" rel="tag"># 抽象类，接口</a>
           
         </div>
       
@@ -478,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/20/linux'sorder/" rel="next" title="Linux常用命令">
-                <i class="fa fa-chevron-left"></i> Linux常用命令
+              <a href="/2016/07/03/gather/" rel="next" title="集合基础">
+                <i class="fa fa-chevron-left"></i> 集合基础
               </a>
             
           </div>
@@ -487,6 +458,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/20/linux'sorder/" rel="prev" title="Linux常用命令">
+                Linux常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -640,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是ElasticSearch"><span class="nav-number">1.</span> <span class="nav-text">什么是ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对比solr"><span class="nav-number">2.</span> <span class="nav-text">对比solr</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-1"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型的实时搜索架构如下"><span class="nav-number">3.</span> <span class="nav-text">典型的实时搜索架构如下</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、理解抽象类"><span class="nav-number">1.</span> <span class="nav-text">一、理解抽象类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、从语法定义层面看abstract-class和interface"><span class="nav-number">2.</span> <span class="nav-text">二、从语法定义层面看abstract class和interface</span></a></li></ol></div>
             
 
           </div>
@@ -797,9 +772,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://chenguixiang.github.io/2016/09/03/ElasticsearchAndSolr/';
-          this.page.identifier = '2016/09/03/ElasticsearchAndSolr/';
-          this.page.title = 'ElasticSearch和Solr的对比分析';
+          this.page.url = 'http://chenguixiang.github.io/2016/08/10/interface/';
+          this.page.identifier = '2016/08/10/interface/';
+          this.page.title = '抽象类与接口的区别';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://misschen.disqus.com/embed.js';
