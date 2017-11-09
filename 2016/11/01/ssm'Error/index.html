@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Zookeeper启动异常," />
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="Zookeeper启动异常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM框架集成小异常">
+<meta property="og:url" content="http://chenguixiang.github.io/2016/11/01/ssm'Error/index.html">
+<meta property="og:site_name" content="Miss Chen&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://chenguixiang.github.io/images/error.png">
+<meta property="og:updated_time" content="2017-11-09T07:42:54.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSM框架集成小异常">
+<meta name="twitter:image" content="http://chenguixiang.github.io/images/error.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chenguixiang.github.io/2016/11/01/ssm'Error/"/>
+
+
+
+
+
+  <title>SSM框架集成小异常 | Miss Chen's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?faaa1a49068a166fc29d44d5e4c22686";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss Chen's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenguixiang.github.io/2016/11/01/ssm'Error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Miss Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss Chen's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SSM框架集成小异常</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-01T14:30:33+08:00">
+                2016-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/异常/" itemprop="url" rel="index">
+                    <span itemprop="name">异常</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/01/ssm'Error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/01/ssm'Error/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/error.png" class="full-image"><br><a id="more"></a></p>
+<h1 id="运行异常"><a href="#运行异常" class="headerlink" title="运行异常"></a>运行异常</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">org.apache.ibatis.binding.BindingException: <span class="function">Invalid bound <span class="title">statement</span> <span class="params">(not found)</span>: com.taotao.mapper.TbItemMapper.selectByExample</span></div><div class="line"><span class="function">	at org.apache.ibatis.binding.MapperMethod$SqlCommand.&lt;init&gt;<span class="params">(MapperMethod.java:<span class="number">189</span>)</span></span></div><div class="line"><span class="function">	at org.apache.ibatis.binding.MapperMethod.&lt;init&gt;<span class="params">(MapperMethod.java:<span class="number">43</span>)</span></span></div><div class="line"><span class="function">	at org.apache.ibatis.binding.MapperProxy.<span class="title">cachedMapperMethod</span><span class="params">(MapperProxy.java:<span class="number">58</span>)</span></span></div><div class="line"><span class="function">	at org.apache.ibatis.binding.MapperProxy.<span class="title">invoke</span><span class="params">(MapperProxy.java:<span class="number">51</span>)</span></span></div><div class="line"><span class="function">	at com.sun.proxy.$Proxy31.<span class="title">selectByExample</span><span class="params">(Unknown Source)</span></span></div><div class="line"><span class="function">	at com.taotao.service.impl.ItemServiceImpl.<span class="title">getItemList</span><span class="params">(ItemServiceImpl.java:<span class="number">25</span>)</span></span></div><div class="line"><span class="function">	at sun.reflect.NativeMethodAccessorImpl.<span class="title">invoke0</span><span class="params">(Native Method)</span></span></div><div class="line"><span class="function">	at sun.reflect.NativeMethodAccessorImpl.<span class="title">invoke</span><span class="params">(NativeMethodAccessorImpl.java:<span class="number">57</span>)</span></span></div><div class="line"><span class="function">	at sun.reflect.DelegatingMethodAccessorImpl.<span class="title">invoke</span><span class="params">(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span></span></div><div class="line"><span class="function">	at java.lang.reflect.Method.<span class="title">invoke</span><span class="params">(Method.java:<span class="number">606</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.aop.support.AopUtils.<span class="title">invokeJoinpointUsingReflection</span><span class="params">(AopUtils.java:<span class="number">302</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.aop.framework.ReflectiveMethodInvocation.<span class="title">invokeJoinpoint</span><span class="params">(ReflectiveMethodInvocation.java:<span class="number">190</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.aop.framework.ReflectiveMethodInvocation.<span class="title">proceed</span><span class="params">(ReflectiveMethodInvocation.java:<span class="number">157</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.transaction.interceptor.TransactionInterceptor$1.<span class="title">proceedWithInvocation</span><span class="params">(TransactionInterceptor.java:<span class="number">99</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.transaction.interceptor.TransactionAspectSupport.<span class="title">invokeWithinTransaction</span><span class="params">(TransactionAspectSupport.java:<span class="number">281</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.transaction.interceptor.TransactionInterceptor.<span class="title">invoke</span><span class="params">(TransactionInterceptor.java:<span class="number">96</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.aop.framework.ReflectiveMethodInvocation.<span class="title">proceed</span><span class="params">(ReflectiveMethodInvocation.java:<span class="number">179</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.<span class="title">invoke</span><span class="params">(ExposeInvocationInterceptor.java:<span class="number">92</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.aop.framework.ReflectiveMethodInvocation.<span class="title">proceed</span><span class="params">(ReflectiveMethodInvocation.java:<span class="number">179</span>)</span></span></div><div class="line"><span class="function">	at org.springframework.aop.framework.JdkDynamicAopProxy.<span class="title">invoke</span><span class="params">(JdkDynamicAopProxy.java:<span class="number">208</span>)</span></span></div><div class="line"><span class="function">	at com.sun.proxy.$Proxy34.<span class="title">getItemList</span><span class="params">(Unknown Source)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.common.bytecode.Wrapper0.<span class="title">invokeMethod</span><span class="params">(Wrapper0.java)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.proxy.javassist.JavassistProxyFactory$1.<span class="title">doInvoke</span><span class="params">(JavassistProxyFactory.java:<span class="number">46</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.proxy.AbstractProxyInvoker.<span class="title">invoke</span><span class="params">(AbstractProxyInvoker.java:<span class="number">72</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.InvokerWrapper.<span class="title">invoke</span><span class="params">(InvokerWrapper.java:<span class="number">53</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.filter.ExceptionFilter.<span class="title">invoke</span><span class="params">(ExceptionFilter.java:<span class="number">64</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.filter.TimeoutFilter.<span class="title">invoke</span><span class="params">(TimeoutFilter.java:<span class="number">42</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.monitor.support.MonitorFilter.<span class="title">invoke</span><span class="params">(MonitorFilter.java:<span class="number">75</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.dubbo.filter.TraceFilter.<span class="title">invoke</span><span class="params">(TraceFilter.java:<span class="number">78</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.filter.ContextFilter.<span class="title">invoke</span><span class="params">(ContextFilter.java:<span class="number">60</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.filter.GenericFilter.<span class="title">invoke</span><span class="params">(GenericFilter.java:<span class="number">112</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.filter.ClassLoaderFilter.<span class="title">invoke</span><span class="params">(ClassLoaderFilter.java:<span class="number">38</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.filter.EchoFilter.<span class="title">invoke</span><span class="params">(EchoFilter.java:<span class="number">38</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.<span class="title">invoke</span><span class="params">(ProtocolFilterWrapper.java:<span class="number">91</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol$1.<span class="title">reply</span><span class="params">(DubboProtocol.java:<span class="number">108</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.remoting.exchange.support.header.HeaderExchangeHandler.<span class="title">handleRequest</span><span class="params">(HeaderExchangeHandler.java:<span class="number">84</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.remoting.exchange.support.header.HeaderExchangeHandler.<span class="title">received</span><span class="params">(HeaderExchangeHandler.java:<span class="number">170</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.remoting.transport.DecodeHandler.<span class="title">received</span><span class="params">(DecodeHandler.java:<span class="number">52</span>)</span></span></div><div class="line"><span class="function">	at com.alibaba.dubbo.remoting.transport.dispatcher.ChannelEventRunnable.<span class="title">run</span><span class="params">(ChannelEventRunnable.java:<span class="number">82</span>)</span></span></div><div class="line"><span class="function">	at java.util.concurrent.ThreadPoolExecutor.<span class="title">runWorker</span><span class="params">(ThreadPoolExecutor.java:<span class="number">1145</span>)</span></span></div><div class="line"><span class="function">	at java.util.concurrent.ThreadPoolExecutor$Worker.<span class="title">run</span><span class="params">(ThreadPoolExecutor.java:<span class="number">615</span>)</span></span></div><div class="line"><span class="function">	at java.lang.Thread.<span class="title">run</span><span class="params">(Thread.java:<span class="number">745</span>)</span></span></div></pre></td></tr></table></figure>
+<h1 id="异常出现原因"><a href="#异常出现原因" class="headerlink" title="异常出现原因"></a>异常出现原因</h1><p>异常出现的原因在于maven工程默认到src/main/resources目录下面读取所有的配置文件，而我们恰恰好把mybatis的xxxMapper.java文件及其映射文件xxxMapper.xml文件一起放在了src/main/java目录下面，导致工程不能读取映射文件，可以去target目录下面看看，里面没有xml映射文件，也就是没有编译进去，所以报错。</p>
+<h1 id="异常解决"><a href="#异常解决" class="headerlink" title="异常解决"></a>异常解决</h1><h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><p>在此工程的pom文件中添加如下内容：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;build&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">            &lt;resource&gt;</div><div class="line">                &lt;directory&gt;src/main/java&lt;/directory&gt;</div><div class="line">                &lt;includes&gt;</div><div class="line">                    &lt;include&gt;**<span class="comment">/*.properties&lt;/include&gt;</span></div><div class="line">                    &lt;include&gt;**/*.xml&lt;/include&gt;</div><div class="line">                &lt;/includes&gt;</div><div class="line">                &lt;filtering&gt;false&lt;/filtering&gt;</div><div class="line">            &lt;/resource&gt;</div><div class="line">        &lt;/resources&gt;</div><div class="line">&lt;/build&gt;</div></pre></td></tr></table></figure>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>或者把src/main/java目录下面的xxxMapper.xml全部按照原路径复制到src/main/resources目录下面</p>
+<p>完美解决！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Zookeeper启动异常/" rel="tag"># Zookeeper启动异常</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/20/zookeep'sError/" rel="next" title="Zookeeper安装启动异常小结">
+                <i class="fa fa-chevron-left"></i> Zookeeper安装启动异常小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Miss Chen" />
+            
+              <p class="site-author-name" itemprop="name">Miss Chen</p>
+              <p class="site-description motion-element" itemprop="description">Dream as if you'll live forever, live as if you'll die today.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#运行异常"><span class="nav-number">1.</span> <span class="nav-text">运行异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常出现原因"><span class="nav-number">2.</span> <span class="nav-text">异常出现原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常解决"><span class="nav-number">3.</span> <span class="nav-text">异常解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一："><span class="nav-number">3.1.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二"><span class="nav-number">3.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Miss Chen</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://misschen.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://chenguixiang.github.io/2016/11/01/ssm'Error/';
+          this.page.identifier = '2016/11/01/ssm'Error/';
+          this.page.title = 'SSM框架集成小异常';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://misschen.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
